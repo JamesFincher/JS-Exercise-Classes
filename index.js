@@ -50,19 +50,19 @@ class Person {
   eat(someFood) {
     if (this.stomach.length < 10) {
       this.stomach.push(someFood)
-    } //else { return this.stomach = this.stomach }
+    }
   }
   poop() {
     return this.stomach = []
   }
   toString() { return `${this.name}, ${this.age}` }
 }
-const testPerson = new Person('john', 24)
-console.log(testPerson)
-testPerson.eat("garlic")
-console.log(testPerson)
-testPerson.poop()
-console.log(testPerson)
+// const testPerson = new Person('john', 24)
+// console.log(testPerson)
+// testPerson.eat("garlic")
+// console.log(testPerson)
+// testPerson.poop()
+// console.log(testPerson)
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -78,8 +78,48 @@ console.log(testPerson)
 */
 
 class Car {
+  constructor(model, milesPerGallon) {
+    this.model = model
+    this.milesPerGallon = milesPerGallon
+    this.tank = 0
+    this.odometer = 0
+
+  }
+
+  fill(gallons) {
+    this.tank = this.tank + gallons
+  }
+  drive(distance) {
+    const range = this.tank * this.milesPerGallon
+    const odoIfRange = this.odometer + distance
+    const leftIfRange = (range - distance) / this.milesPerGallon
+    const odoNoRange = range
+    const leftNoRange = 0
+    const speak = `I ran out of fuel at ${odoNoRange} miles!`
+    if (distance < range) { return this.tank = leftIfRange, this.odometer = odoIfRange } else { this.odometer = odoNoRange, this.tank = 0 } { return `I ran out of fuel at ${odoNoRange} miles!` }
+
+
+    //{ this.odometer = odoNoRange, this.tank = 0, this.odometer } 
+
+
+    // const range = this.tank * this.milesPerGallon
+    // const left = (range - distance) / this.milesPerGallon
+    // const newOdoIfRange = this.odometer + distance
+    // const newOdoIfNotRange = this.odometer + range
+    // const gasTankIfRange = this.tank - range
+    // const gasTankNoRange = this.tank - this.tank
+    // if (distance < range) {
+    //   function yesRange() { return this.odo = newOdoIfRange }
+
+    //   console.log(range)
+    //   console.log(left)
+  }
 
 }
+
+const testCar = new Car('ford', 20)
+console.log(testCar.drive(300))
+console.log(testCar)
 
 /*
   TASK 3
